@@ -9,10 +9,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SearchTest {
 
+    String url = "https://www.google.com/",
+            searchText = "Selenide",
+            resultSearch = "selenide.org";
     @Test
     void searchSelenideWithGoogleTest() {
-        open("https://www.google.com/");
-        $(byName("q")).setValue("Selenide").pressEnter();
-        $("#search").shouldHave(text("selenide.org"));
+        open(url);
+        $("[name = q]").setValue(searchText).pressEnter();
+        $("#search").shouldHave(text(resultSearch));
     }
 }
